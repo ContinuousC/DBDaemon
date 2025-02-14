@@ -1,0 +1,71 @@
+[package]
+name = "dbdaemon"
+description = "Database schema type definitions and functions"
+version = "0.1.11-acc.4"
+authors = ["Maarten Deprez", "Vincent Stuyck"]
+default-run = "dbdaemon"
+repository = "https://github.com/ContinuousC/DBDaemon.git"
+license = "Elastic-2.0"
+edition = "2021"
+publish = false
+
+[features]
+default = ["elastic", "agent"]
+agent = []                     # Allow direct connections from the agent
+elastic = []
+mariadb = []
+
+[dependencies]
+reqwest = { version = "0.12", features = ["json", "trust-dns", "native-tls"] }
+url = "2.2"
+http = "1.2"
+serde = { version = "1.0", features = ["derive", "rc"] }
+serde_json = "1.0.113"
+serde_yaml = "0.9"
+serde_cbor = "0.11.1"
+chrono = { version = "0.4.11", features = ["serde"] }
+# https://crates.io/crates/indexmap
+indexmap = "2"
+tokio = { version = "1.0", features = [
+    "fs",
+    "net",
+    "macros",
+    "rt",
+    "rt-multi-thread",
+    "sync",
+    "signal",
+] }
+tokio-rustls = { version = "0.26" }
+webpki = "0.22"
+thiserror = "1.0"
+log = "0.4.14"
+simplelog = "^0.10.0"
+clap = { version = "4.1", features = ["derive", "env"] }
+tokio-stream = "0.1.8"
+futures = "0.3.21"
+bytes = "1.1.0"
+parking_lot = "0.12.1"
+uuid = { version = "1.4", features = ["v4"] }
+rustls = "0.23"
+tracing = "0.1.40"
+opentelemetry = { version = "0.27", features = ["logs"] }
+opentelemetry_sdk = { version = "0.27", features = ["rt-tokio"] }
+tracing-opentelemetry = "0.28"
+tracing-subscriber = { version = "0.3.18", features = [
+    "env-filter",
+    "chrono",
+    "parking_lot",
+] }
+reqwest-middleware = "0.4"
+reqwest-tracing = { version = "0.5.5", features = ["opentelemetry_0_27"] }
+tracing-futures = "0.2.5"
+opentelemetry-otlp = "0.27"
+mimalloc = "0.1.39"
+
+# local
+dbdaemon-api = { version = "=0.1.5-acc.4" }
+dbdaemon-types = { version = "=0.1.1-acc.2" }
+dbschema = { version = "0.1.31" }
+dbschema-elastic = { version = "0.1.1" }
+rpc = { version = "0.1.37", features = ["opentelemetry"] }
+env_logger = "0.11.6"

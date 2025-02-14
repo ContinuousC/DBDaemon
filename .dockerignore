@@ -1,0 +1,4 @@
+.git*
+Build
+Source/Node
+Source/Rust/target
