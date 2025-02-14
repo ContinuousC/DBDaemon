@@ -1,0 +1,12 @@
+*~
+\#*
+
+/.devspace
+/target
+/node-connector/node_modules
+/node-connector/db_connector.js
+/*.log
+
+/dbdaemon/run-dev-instance.sh
+/dbdaemon/run-dev-test-client.sh
+/dbdaemon/certs

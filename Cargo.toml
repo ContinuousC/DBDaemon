@@ -1,0 +1,25 @@
+[workspace]
+resolver = "2"
+members = ["dbdaemon", "dbdaemon-api", "dbdaemon-types"]
+
+# [patch.crates-io]
+# serde_json = { path = "json"}
+
+[patch.crates-io]
+dbdaemon = { path = "dbdaemon" }
+dbdaemon-api = { path = "dbdaemon-api" }
+dbdaemon-types = { path = "dbdaemon-types" }
+
+dbschema = { git = "https://github.com/ContinuousC/DBSchema.git" }
+dbschema-derive = { git = "https://github.com/ContinuousC/DBSchema.git" }
+dbschema-elastic = { git = "https://github.com/ContinuousC/DBSchema.git" }
+
+rpc = { git = "https://github.com/ContinuousC/Rpc.git" }
+rpc_derive = { git = "https://github.com/ContinuousC/Rpc.git" }
+
+# dbschema = { path = "../../../DBSchema/Source/Rust/dbschema" }
+# dbschema-derive = { path = "../../../DBSchema/Source/Rust/dbschema-derive" }
+# dbschema-elastic = { path = "../../../DBSchema/Source/Rust/dbschema-elastic" }
+
+# rpc = { path = "../../../Rpc/Source/Rust/rpc" }
+# rpc_derive = { path = "../../../Rpc/Source/Rust/rpc_derive" }

@@ -1,0 +1,58 @@
+api: 0.1.12
+workspaces:
+  dbdaemon:
+    type: cargo
+    root: Source/Rust
+    pre_commit:
+      - run: cargo update -w
+        files:
+          - Cargo.lock
+artifacts:
+  dbdaemon:
+    type: docker
+    pre_tag:
+      - working_dir: repo
+        run: |
+          docker image rm dbdaemon;
+          DOCKER_BUILDKIT=1 docker build --ssh default --target dbdaemon -t dbdaemon:$VC_ARTIFACT_VERSION .
+          docker tag dbdaemon:$VC_ARTIFACT_VERSION gitea.contc/continuousc/dbdaemon:$VC_ARTIFACT_VERSION
+          docker push gitea.contc/continuousc/dbdaemon:$VC_ARTIFACT_VERSION
+    source:
+      type: cargo
+      workspace: dbdaemon
+      root: Source/Rust/dbdaemon
+      paths:
+        - Dockerfile
+        - Cargo.toml
+        - Cargo.lock
+        - provisioned
+      dependencies:
+        - name: dbdaemon-api
+          artifact: dbdaemon-api
+        - name: dbdaemon-types
+          artifact: dbdaemon-types
+  dbdaemon-api:
+    type: cargo
+    pre_tag:
+      - run: cargo publish --registry si
+    source:
+      type: cargo
+      workspace: dbdaemon
+      root: Source/Rust/dbdaemon-api
+      paths:
+        - Cargo.toml
+        # - Cargo.lock
+      dependencies:
+        - name: dbdaemon-types
+          artifact: dbdaemon-types
+  dbdaemon-types:
+    type: cargo
+    pre_tag:
+      - run: cargo publish --registry si
+    source:
+      type: cargo
+      workspace: dbdaemon
+      root: Source/Rust/dbdaemon-types
+      paths:
+        - Cargo.toml
+        # - Cargo.lock

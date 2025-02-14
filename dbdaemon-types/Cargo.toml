@@ -1,0 +1,18 @@
+[package]
+name = "dbdaemon-types"
+description = "ContinuousC database service"
+version = "0.1.1-acc.2"
+authors = ["Maarten Deprez", "Vincent Stuyck"]
+repository = "https://github.com/ContinuousC/DBDaemon.git"
+license = "Elastic-2.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+serde = { version = "1.0", features = ["derive", "rc"] }
+serde_json = "1.0"
+serde_cbor = "0.11.2"
+chrono = { version = "0.4.11", features = ["serde"] }
+
+dbschema = { version = "0.1.14" }
+dbschema-derive = { version = "0.1.0" }

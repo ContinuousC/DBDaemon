@@ -1,0 +1,11 @@
+{
+    "id_monitored_host": "myWonderfulHost",
+    "id_discovered_host": "myDiscoveryHost",
+    "updated_by_id_user": "someUser",
+    "ip_monitoring_management": "127.0.0.1",
+    "monitor": "pingOnly",
+    "some_dictionary": { },
+    "ips_to_monitor": [],
+    "monitoring_packs": [],
+    "tags": []
+}

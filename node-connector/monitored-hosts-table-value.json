@@ -1,0 +1,19 @@
+{
+    "object_id": "some_guid",
+    "value": {
+	"version": {
+	    "current": {
+		"created": "2021-08-19T00:00:00.000+02:00",
+		"from": "2021-08-19T00:00:00.000+02:00"
+	    }
+	},
+	"value": {
+	    "id_monitored_host": "myWonderfulHost",
+	    "id_discovered_host": "myDiscoveryHost",
+	    "updated_by_id_user": "someUser",
+	    "ip_monitoring_management": "127.0.0.1",
+	    "monitor": { "pingOnly": null },
+	    "some_dictionary": { }
+	}
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "name": "dbconnector",
+    "collaborators": [
+	"Maarten Deprez <mdp@si-int.eu>"
+    ],
+    "description": "ContinuousC DbDaemon connector.",
+    "version": "0.1.2",
+    "repository": {
+	"type": "git",
+	"url": "ssh://git@sigit01/~/Development/ContinuousC/DBDaemon"
+    },
+    "dependencies": {
+	"cbor": "^8.1.0",
+	"rpc": "^0.1.15"
+    },
+    "files": [
+	"db_connector.js"
+    ],
+    "main": "db_connector.js",
+    "publishConfig": {
+	"registry": "http://sigit01:4873/"
+    }
+}

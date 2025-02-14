@@ -1,0 +1,55 @@
+{
+    "versioning": "dual_timeline",
+    "schema": {
+        "fields": {
+	    "id_monitored_host": { "string": {} },
+	    "id_discovered_host": { "string": {} },
+	    "updated_by_id_user": { "string": {} },
+	    "ip_monitoring_management": { "ipv4": {} },
+	    "some_dictionary": {
+		"dictionary": {
+		    "value_type": { "integer": {} }
+		}
+	    },
+	    "monitor": {
+                "enum": {
+		    "options": {
+                        "yes": { "unit": {} },
+                        "no": { "unit": {} },
+                        "pingOnly": { "unit": {} }
+		    },
+		    "format": "unit_as_string"
+                }
+	    },
+	    "ips_to_monitor": {
+                "set": {
+		    "value_type": { 
+                        "enum": {
+			    "options": {
+                                "ipv4": { "ipv4": {} },
+                                "ipv6": { "ipv6": {} }
+				}
+                        } 
+		    }
+                }
+	    },         
+	    "tags": {
+		"set": {
+		    "value_type": { "string": {} }
+                }
+	    },
+	    "monitoring_packs": {
+                "set": {
+		    "value_type": {
+                        "enum": {
+			    "options": {
+                                "NPing": { "unit": {} },
+                                "Interface": { "unit": {} }
+			    }
+                        }
+		    }
+                }
+	    }
+        }
+    }
+}

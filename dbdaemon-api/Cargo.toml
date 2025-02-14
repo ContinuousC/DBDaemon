@@ -1,0 +1,26 @@
+[package]
+name = "dbdaemon-api"
+description = "ContinuousC database service"
+version = "0.1.5-acc.4"
+authors = ["Maarten Deprez", "Vincent Stuyck"]
+repository = "https://github.com/ContinuousC/DBDaemon.git"
+license = "Elastic-2.0"
+edition = "2021"
+publish = false
+
+
+[dependencies]
+serde = { version = "1.0", features = ["derive", "rc"] }
+serde_json = "1.0"
+serde_cbor = "0.11.2"
+chrono = { version = "0.4.11", features = ["serde"] }
+clap = "4.1"
+log = "0.4.17"
+tracing = "0.1.40"
+uuid = "1.12.1"
+
+dbdaemon-types = { version = "=0.1.1-acc.2" }
+dbschema = { version = "0.1.14" }
+dbschema-derive = { version = "0.1.0" }
+rpc = { version = "0.1.34", features = ["opentelemetry"] }
+rpc_derive = { version = "0.1.15" }

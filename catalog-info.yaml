@@ -1,0 +1,13 @@
+################################################################################
+# Copyright ContinuousC. Licensed under the "Elastic License 2.0".             #
+################################################################################
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dbdaemon
+spec:
+  type: service
+  lifecycle: production
+  owner: developers
+  system: continuousc-core

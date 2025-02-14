@@ -1,0 +1,62 @@
+################################################################################
+# Copyright ContinuousC. Licensed under the "Elastic License 2.0".             #
+################################################################################
+
+version: v2beta1
+name: dbdaemon
+
+pullSecrets:
+  gitea:
+    registry: gitea.contc
+
+vars:
+  SSH_KEYDIR:
+    source: env
+    default: ~/.ssh
+
+dev:
+  dbdaemon:
+    imageSelector: gitea.contc/continuousc/dbdaemon
+    devImage: gitea.contc/controlplane/rust-builder:0.2.0
+    workingDir: /root/source/DBDaemon
+    command:
+      - /usr/bin/ssh-agent
+      - /bin/bash
+      - -c
+      - |
+        ssh-add ~/.ssh/id_ed25519
+        /root/.cargo/bin/cargo watch -x 'run --bin dbdaemon -- --bind 0.0.0.0:9999 --certs-dir /usr/share/continuousc/certs/dbdaemon --ca ca.crt --cert tls.crt --key tls.key --elastic-url https://opensearch-cluster-master:9200 --elastic-cert /usr/share/continuousc/certs/opensearch/tls.crt --elastic-key /usr/share/continuousc/certs/opensearch/tls.key --elastic-ca /usr/share/continuousc/certs/opensearch/ca.crt --elastic-index-prefix continuousc -vvv'
+    logs: {}
+    resources:
+      requests:
+        cpu: "0.3"
+        memory: 512Mi
+    env:
+      - name: CARGO_TERM_COLOR
+        value: always
+      - name: RUST_BACKTRACE
+        value: "1"
+      - name: RUST_LOG
+        value: debug
+      - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        value: grpc://jaeger-collector:4317
+    sync:
+      - path: ./Source/Rust:/root/source/DBDaemon
+        excludePaths:
+          - "*~"
+          - "**/target"
+        startContainer: true
+        disableDownload: true
+        printLogs: true
+      - path: ${SSH_KEYDIR}/id_ed25519:/root/.ssh/id_ed25519
+        startContainer: true
+        disableDownload: true
+        onUpload:
+          restartContainer: true
+    persistPaths:
+      - path: /root/.cargo/registry
+        volumePath: cargo-registry
+        skipPopulate: true
+      - path: /root/source/DBDaemon/target
+        volumePath: cargo-target
+        skipPopulate: true
