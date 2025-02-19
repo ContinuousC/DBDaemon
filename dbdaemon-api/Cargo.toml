@@ -20,7 +20,7 @@ tracing = "0.1.40"
 uuid = "1.12.1"
 
 dbdaemon-types = { version = "=0.1.1-acc.2" }
-dbschema = { version = "0.1.14" }
-dbschema-derive = { version = "0.1.0" }
-rpc = { version = "0.1.34", features = ["opentelemetry"] }
-rpc_derive = { version = "0.1.15" }
+dbschema = { version = "=0.1.39" }
+dbschema-derive = { version = "=0.1.9" }
+rpc = { version = "=0.1.38", features = ["opentelemetry"] }
+rpc_derive = { version = "=0.1.23" }

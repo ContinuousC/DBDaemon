@@ -10,12 +10,12 @@ dbdaemon = { path = "dbdaemon" }
 dbdaemon-api = { path = "dbdaemon-api" }
 dbdaemon-types = { path = "dbdaemon-types" }
 
-dbschema = { git = "https://github.com/ContinuousC/DBSchema.git" }
-dbschema-derive = { git = "https://github.com/ContinuousC/DBSchema.git" }
-dbschema-elastic = { git = "https://github.com/ContinuousC/DBSchema.git" }
+dbschema = { git = "https://github.com/ContinuousC/DBSchema.git", tag = "dbschema_v0.1.39" }
+dbschema-derive = { git = "https://github.com/ContinuousC/DBSchema.git", tag = "dbschema-derive_v0.1.9" }
+dbschema-elastic = { git = "https://github.com/ContinuousC/DBSchema.git", tag = "dbschema-elastic_v0.1.4" }
 
-rpc = { git = "https://github.com/ContinuousC/Rpc.git" }
-rpc_derive = { git = "https://github.com/ContinuousC/Rpc.git" }
+rpc = { git = "https://github.com/ContinuousC/Rpc.git", tag = "rpc_v0.1.38" }
+rpc_derive = { git = "https://github.com/ContinuousC/Rpc.git", tag = "rpc_derive_v0.1.23" }
 
 # dbschema = { path = "../../../DBSchema/Source/Rust/dbschema" }
 # dbschema-derive = { path = "../../../DBSchema/Source/Rust/dbschema-derive" }

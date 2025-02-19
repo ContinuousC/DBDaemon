@@ -65,7 +65,7 @@ mimalloc = "0.1.39"
 # local
 dbdaemon-api = { version = "=0.1.5-acc.4" }
 dbdaemon-types = { version = "=0.1.1-acc.2" }
-dbschema = { version = "0.1.31" }
-dbschema-elastic = { version = "0.1.1" }
-rpc = { version = "0.1.37", features = ["opentelemetry"] }
+dbschema = { version = "=0.1.39" }
+dbschema-elastic = { version = "=0.1.4" }
+rpc = { version = "0.1.38", features = ["opentelemetry"] }
 env_logger = "0.11.6"
